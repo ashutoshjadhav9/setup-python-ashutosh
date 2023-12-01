@@ -238,6 +238,8 @@ export function toGraalPyArchitecture(architecture: string) {
       return 'amd64';
     case 'arm64':
       return 'aarch64';
+    case 'ppc64le':
+      return 'ppc64le';
   }
   return architecture;
 }
