@@ -11,7 +11,7 @@ import * as ifm from '@actions/http-client/interfaces';
 export const IS_WINDOWS = process.platform === 'win32';
 export const IS_LINUX = process.platform === 'linux';
 export const IS_MAC = process.platform === 'darwin';
-export const WINDOWS_ARCHS = ['x86', 'x64'];
+export const WINDOWS_ARCHS = ['x86', 'x64', 'ppc64le'];
 export const WINDOWS_PLATFORMS = ['win32', 'win64'];
 const PYPY_VERSION_FILE = 'PYPY_VERSION';
 
