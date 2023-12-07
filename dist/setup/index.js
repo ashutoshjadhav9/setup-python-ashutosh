@@ -70167,6 +70167,7 @@ function findReleaseFromManifest(semanticVersionSpec, architecture, manifest) {
     return __awaiter(this, void 0, void 0, function* () {
         console.log("=========== start =============");
         if (!manifest) {
+            console.log("=========== in if =============");
             manifest = yield getManifest();
         } 
         console.log(semanticVersionSpec + " -------- " + manifest + " -------- " + architecture);
