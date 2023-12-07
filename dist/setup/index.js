@@ -70165,7 +70165,7 @@ const MANIFEST_REPO_BRANCH = 'main';
 function findReleaseFromManifest(semanticVersionSpec, architecture, manifest) {
     return __awaiter(this, void 0, void 0, function* () {
         //if (!manifest) {
-            manifest = yield getManifest();
+            //manifest = yield getManifest();
         //}
         console.log(semanticVersionSpec + " -------- " + manifest + " -------- " + architecture);
         const foundRelease = yield tc.findFromManifest(semanticVersionSpec, false, manifest, architecture);
