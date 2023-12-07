@@ -70170,12 +70170,11 @@ exports.MANIFEST_URL = `https://raw.githubusercontent.com/${MANIFEST_REPO_OWNER}
         const foundRelease = yield tc.findFromManifest(semanticVersionSpec, false, manifest, architecture);
         return foundRelease;
     });
-}
-exports.findReleaseFromManifest = findReleaseFromManifest;*/
-manifest = yield getManifest();
+}*/
+exports.findReleaseFromManifest = findReleaseFromManifest;
 function getManifest() {
     core.debug(`Getting manifest from indygreg/python-build-standalone@${MANIFEST_REPO_BRANCH}`);
-    return tc.getManifestFromRepo(MANIFEST_REPO_OWNER, MANIFEST_REPO_NAME, AUTH, MANIFEST_REPO_BRANCH);
+    return tc.getManifestFromRepo("indygreg", "python-build-standalone", AUTH, MANIFEST_REPO_BRANCH);
 }
 exports.getManifest = getManifest;
 function installPython(workingDirectory) {
