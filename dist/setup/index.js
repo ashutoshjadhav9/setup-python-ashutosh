@@ -70166,6 +70166,7 @@ function findReleaseFromManifest(semanticVersionSpec, architecture, manifest) {
         if (!manifest) {
             manifest = yield getManifest();
         }
+        console.log(" ========== Ashutosh in function ========== ");
         console.log(semanticVersionSpec + " -------- " + manifest + " -------- " + architecture);
         const foundRelease = yield tc.findFromManifest(semanticVersionSpec, false, manifest, architecture);
         return foundRelease;
