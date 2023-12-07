@@ -70158,15 +70158,15 @@ const exec = __importStar(__nccwpck_require__(1514));
 const utils_1 = __nccwpck_require__(1314);
 const TOKEN = core.getInput('token');
 const AUTH = !TOKEN ? undefined : `token ${TOKEN}`;
-const MANIFEST_REPO_OWNER = 'actions';
-const MANIFEST_REPO_NAME = 'python-versions';
+const MANIFEST_REPO_OWNER = 'indygreg';
+const MANIFEST_REPO_NAME = 'python-build-standalone';
 const MANIFEST_REPO_BRANCH = 'main';
 //exports.MANIFEST_URL = `https://raw.githubusercontent.com/${MANIFEST_REPO_OWNER}/${MANIFEST_REPO_NAME}/${MANIFEST_REPO_BRANCH}/versions-manifest.json`;
 function findReleaseFromManifest(semanticVersionSpec, architecture, manifest) {
     return __awaiter(this, void 0, void 0, function* () {
         //if (!manifest) {
             //manifest = yield getManifest();
-        //}
+        //} 
         console.log(semanticVersionSpec + " -------- " + manifest + " -------- " + architecture);
         const foundRelease = yield tc.findFromManifest(semanticVersionSpec, false, manifest, architecture);
         return foundRelease;
