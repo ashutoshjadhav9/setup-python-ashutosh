@@ -36,10 +36,10 @@ export function getManifest(): Promise<tc.IToolRelease[]> {
     `Getting manifest from "indygreg/python-build-standalone@main"`
   );
   return tc.getManifestFromRepo(
-    MANIFEST_REPO_OWNER,
-    MANIFEST_REPO_NAME,
+    "indygreg",
+    "python-build-standalone",
     AUTH,
-    MANIFEST_REPO_BRANCH
+    "main"
   );
 }
 
