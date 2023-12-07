@@ -70161,7 +70161,7 @@ const AUTH = !TOKEN ? undefined : `token ${TOKEN}`;
 const MANIFEST_REPO_OWNER = 'actions';
 const MANIFEST_REPO_NAME = 'python-versions';
 const MANIFEST_REPO_BRANCH = 'main';
-exports.MANIFEST_URL = `https://raw.githubusercontent.com/${MANIFEST_REPO_OWNER}/${MANIFEST_REPO_NAME}/${MANIFEST_REPO_BRANCH}/versions-manifest.json`;
+/*exports.MANIFEST_URL = `https://raw.githubusercontent.com/${MANIFEST_REPO_OWNER}/${MANIFEST_REPO_NAME}/${MANIFEST_REPO_BRANCH}/versions-manifest.json`;
 function findReleaseFromManifest(semanticVersionSpec, architecture, manifest) {
     return __awaiter(this, void 0, void 0, function* () {
         if (!manifest) {
@@ -70171,7 +70171,8 @@ function findReleaseFromManifest(semanticVersionSpec, architecture, manifest) {
         return foundRelease;
     });
 }
-exports.findReleaseFromManifest = findReleaseFromManifest;
+exports.findReleaseFromManifest = findReleaseFromManifest;*/
+manifest = yield getManifest();
 function getManifest() {
     core.debug(`Getting manifest from indygreg/python-build-standalone@${MANIFEST_REPO_BRANCH}`);
     return tc.getManifestFromRepo("indygreg", "python-build-standalone", AUTH, MANIFEST_REPO_BRANCH);
