@@ -70179,7 +70179,7 @@ console.log(" ========== Ashutosh 2 ========== ");
 exports.findReleaseFromManifest = findReleaseFromManifest;
 function getManifest() {
     core.debug(`Getting manifest from indygreg/python-build-standalone@main`);
-    return tc.getManifestFromRepo("indygreg", "python-build-standalone", AUTH, "main");
+    return tc.getManifestFromRepo("indygreg", "python-build-standalone", "main");
 }
 console.log(" ========== Ashutosh 3 ========== ");
 exports.getManifest = getManifest;
