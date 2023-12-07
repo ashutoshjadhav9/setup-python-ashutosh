@@ -70172,6 +70172,7 @@ exports.MANIFEST_URL = `https://raw.githubusercontent.com/${MANIFEST_REPO_OWNER}
     });
 }
 exports.findReleaseFromManifest = findReleaseFromManifest;*/
+manifest = yield getManifest();
 function getManifest() {
     core.debug(`Getting manifest from indygreg/python-build-standalone@${MANIFEST_REPO_BRANCH}`);
     return tc.getManifestFromRepo(MANIFEST_REPO_OWNER, MANIFEST_REPO_NAME, AUTH, MANIFEST_REPO_BRANCH);
