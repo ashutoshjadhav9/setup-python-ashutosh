@@ -70172,10 +70172,12 @@ function findReleaseFromManifest(semanticVersionSpec, architecture, manifest) {
     });
 }
 exports.findReleaseFromManifest = findReleaseFromManifest;
+console.log(" ========== Ashutosh 2 ========== ");
 function getManifest() {
     core.debug(`Getting manifest from ${MANIFEST_REPO_OWNER}/${MANIFEST_REPO_NAME}@${MANIFEST_REPO_BRANCH}`);
     return tc.getManifestFromRepo(MANIFEST_REPO_OWNER, MANIFEST_REPO_NAME, AUTH, MANIFEST_REPO_BRANCH);
 }
+console.log(" ========== Ashutosh 3 ========== ");
 exports.getManifest = getManifest;
 function installPython(workingDirectory) {
     return __awaiter(this, void 0, void 0, function* () {
