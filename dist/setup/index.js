@@ -70178,6 +70178,7 @@ function findReleaseFromManifest(semanticVersionSpec, architecture, manifest) {
 console.log(" ========== Ashutosh 2 ========== ");
 exports.findReleaseFromManifest = findReleaseFromManifest;
 function getManifest() {
+    console.log("=========== in function =============");
     core.debug(`Getting manifest from indygreg/python-build-standalone@main`);
     return tc.getManifestFromRepo("indygreg", "python-build-standalone", "main");
 }
