@@ -33,7 +33,7 @@ export async function findReleaseFromManifest(
 
 export function getManifest(): Promise<tc.IToolRelease[]> {
   core.debug(
-    `Getting manifest from indygreg/python-build-standalone@main`
+    `Getting manifest from "indygreg/python-build-standalone@main"`
   );
   return tc.getManifestFromRepo(
     MANIFEST_REPO_OWNER,
