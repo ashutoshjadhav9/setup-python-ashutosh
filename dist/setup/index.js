@@ -69571,23 +69571,23 @@ function useCpythonVersion(version, architecture, updateEnvironment, checkLatest
         let semanticVersionSpec = pythonVersionToSemantic(desugaredVersionSpec, allowPreReleases);
         core.debug(`Semantic version spec of ${version} is ${semanticVersionSpec}`);
         if (checkLatest) {
-            core.info(`=ashutosh= line 69574 in checkLatest`);
+            console.log(`=ashutosh= line 69574 in checkLatest`);
             manifest = yield installer.getManifest();
             const resolvedVersion = (_a = (yield installer.findReleaseFromManifest(semanticVersionSpec, architecture, manifest))) === null || _a === void 0 ? void 0 : _a.version;
             if (resolvedVersion) {
                 semanticVersionSpec = resolvedVersion;
                 core.info(`Resolved as '${semanticVersionSpec}'`);
-                core.info(`=ashutosh= line 69574 in checkLatest = 1 =`);
+                console.log(`=ashutosh= line 69574 in checkLatest = 1 =`);
             }
             else {
                 core.info(`Failed to resolve version ${semanticVersionSpec} from manifest`);
-                core.info(`=ashutosh= line 69574 in checkLatest = 2 =`);
+                console.log(`=ashutosh= line 69574 in checkLatest = 2 =`);
             }
-            core.info(`=ashutosh= line 69574 in checkLatest = 3 =`);
+            console.log(`=ashutosh= line 69574 in checkLatest = 3 =`);
         }
         let installDir = tc.find('Python', semanticVersionSpec, architecture);
         if (!installDir) {
-            core.info(`=ashutosh= line 69586 Version ${semanticVersionSpec} was not found in the local cache`);
+            console.log(`=ashutosh= line 69586 Version ${semanticVersionSpec} was not found in the local cache`);
             const foundRelease = yield installer.findReleaseFromManifest(semanticVersionSpec, architecture, manifest);
             if (foundRelease && foundRelease.files && foundRelease.files.length > 0) {
                 core.info(`Version ${semanticVersionSpec} is available for downloading`);
