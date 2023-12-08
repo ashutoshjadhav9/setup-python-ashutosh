@@ -69583,7 +69583,7 @@ function useCpythonVersion(version, architecture, updateEnvironment, checkLatest
         }
         let installDir = tc.find('Python', semanticVersionSpec, architecture);
         if (!installDir) {
-            core.info(`Version ${semanticVersionSpec} was not found in the local cache`);
+            core.info(`=ashutosh= line 69586 Version ${semanticVersionSpec} was not found in the local cache`);
             const foundRelease = yield installer.findReleaseFromManifest(semanticVersionSpec, architecture, manifest);
             if (foundRelease && foundRelease.files && foundRelease.files.length > 0) {
                 core.info(`Version ${semanticVersionSpec} is available for downloading`);
@@ -70167,8 +70167,10 @@ function findReleaseFromManifest(semanticVersionSpec, architecture, manifest) {
     return __awaiter(this, void 0, void 0, function* () {
         console.log("=========== start =============");
         if (!manifest) {
+            console.log(manifest);
             console.log("=========== in if =============");
             manifest = yield getManifest();
+            console.log("=========== in if 2=============");
         } 
         console.log(semanticVersionSpec + " -------- " + manifest + " -------- " + architecture);
         const foundRelease = yield tc.findFromManifest(semanticVersionSpec, false, manifest, architecture);
