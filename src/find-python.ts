@@ -46,6 +46,7 @@ export async function useCpythonVersion(
   core.debug(`Semantic version spec of ${version} is ${semanticVersionSpec}`);
 
   if (checkLatest) {
+    console.log(" ========== in find-python 1 1 Ashutosh ========== ");
     manifest = await installer.getManifest();
     const resolvedVersion = (
       await installer.findReleaseFromManifest(
@@ -54,7 +55,7 @@ export async function useCpythonVersion(
         manifest
       )
     )?.version;
-
+    console.log(" ========== in find-python 1 2 Ashutosh ========== ");
     if (resolvedVersion) {
       semanticVersionSpec = resolvedVersion;
       core.info(`Resolved as '${semanticVersionSpec}'`);
@@ -63,6 +64,7 @@ export async function useCpythonVersion(
         `Failed to resolve version ${semanticVersionSpec} from manifest`
       );
     }
+    console.log(" ========== in find-python 1 3 Ashutosh ========== ");
   }
 
   let installDir: string | null = tc.find(
@@ -71,6 +73,7 @@ export async function useCpythonVersion(
     architecture
   );
   if (!installDir) {
+    console.log(" ========== in find-python 2 1 Ashutosh ========== ");
     core.info(
       `Version ${semanticVersionSpec} was not found in the local cache`
     );
@@ -79,17 +82,19 @@ export async function useCpythonVersion(
       architecture,
       manifest
     );
-
+    console.log(" ========== in find-python 2 2 Ashutosh ========== ");
     if (foundRelease && foundRelease.files && foundRelease.files.length > 0) {
       core.info(`Version ${semanticVersionSpec} is available for downloading`);
       await installer.installCpythonFromRelease(foundRelease);
 
       installDir = tc.find('Python', semanticVersionSpec, architecture);
     }
+    console.log(" ========== in find-python 2 3 Ashutosh ========== ");
   }
 
   if (!installDir) {
     const osInfo = await getOSInfo();
+    console.log(" ========== in find-python installDir Ashutosh ========== ");
     throw new Error(
       [
         `The version '${version}' with architecture '${architecture}' was not found for ${
