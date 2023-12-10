@@ -70164,6 +70164,8 @@ exports.MANIFEST_URL = `https://raw.githubusercontent.com/${MANIFEST_REPO_OWNER}
 function findReleaseFromManifest(semanticVersionSpec, architecture, manifest) {
     return __awaiter(this, void 0, void 0, function* () {
         if (!manifest) {
+
+	     console.log(" ========== Ashutosh in if ========== ");
             manifest = yield getManifest();
         }
         console.log(" ========== Ashutosh in function ========== ");
