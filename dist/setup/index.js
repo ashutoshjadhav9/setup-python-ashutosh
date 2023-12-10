@@ -70163,15 +70163,15 @@ console.log(" ========== Ashutosh ========== ");
 exports.MANIFEST_URL = `https://raw.githubusercontent.com/${MANIFEST_REPO_OWNER}/${MANIFEST_REPO_NAME}/${MANIFEST_REPO_BRANCH}/versions-manifest.json`;
 function findReleaseFromManifest(semanticVersionSpec, architecture, manifest) {
     return __awaiter(this, void 0, void 0, function* () {
-        console.log("=========== start =============");
+        console.log("=========== start ============="); // 1st
         if (!manifest) {
-            console.log(manifest);
-	        console.log(" ========== in if ========== ");
+            console.log(manifest); // 2nd {null in 1st run}
+	        console.log(" ========== in if ========== "); // 3rd
             manifest = yield getManifest();
-            console.log("========== in if 2========== ");
+            console.log("========== in if 2========== "); // 5th
         }
-        console.log(" ========== Ashutosh in function ========== ");
-        console.log(semanticVersionSpec + " -------- " + manifest + " -------- " + architecture);
+        console.log(" ========== Ashutosh in function ========== "); // 6th
+        console.log(semanticVersionSpec + " -------- " + manifest + " -------- " + architecture); // 7th
         const foundRelease = yield tc.findFromManifest(semanticVersionSpec, false, manifest, architecture);
         return foundRelease;
     });
@@ -70179,7 +70179,7 @@ function findReleaseFromManifest(semanticVersionSpec, architecture, manifest) {
 exports.findReleaseFromManifest = findReleaseFromManifest;
 console.log(" ========== Ashutosh 2 ========== ");
 function getManifest() {
-    console.log("=========== in function =============");
+    console.log("=========== in function ============="); // 4th
     core.debug(`Getting manifest from ${MANIFEST_REPO_OWNER}/${MANIFEST_REPO_NAME}@${MANIFEST_REPO_BRANCH}`);
     return tc.getManifestFromRepo(MANIFEST_REPO_OWNER, MANIFEST_REPO_NAME, AUTH, MANIFEST_REPO_BRANCH);
 }
