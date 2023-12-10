@@ -70185,8 +70185,9 @@ console.log(" ========== Ashutosh 2 ========== ");
 exports.findReleaseFromManifest = findReleaseFromManifest;
 function getManifest() {
     console.log("=========== in function =============");
-    core.debug(`Getting manifest from indygreg/python-build-standalone@main`);
-    return tc.getManifestFromRepo("indygreg", "python-build-standalone", "main");
+    core.debug(`Getting manifest from ${MANIFEST_REPO_OWNER}/${MANIFEST_REPO_NAME}@${MANIFEST_REPO_BRANCH}`);
+    return tc.getManifestFromRepo(MANIFEST_REPO_OWNER, MANIFEST_REPO_NAME, AUTH, MANIFEST_REPO_BRANCH);
+    console.log("=== Ashutosh logs in ppc64le ===" + ${MANIFEST_REPO_OWNER} + "" + ${MANIFEST_REPO_NAME} + "" + ${MANIFEST_REPO_BRANCH} );
 }
 console.log(" ========== Ashutosh 3 ========== ");
 exports.getManifest = getManifest;
