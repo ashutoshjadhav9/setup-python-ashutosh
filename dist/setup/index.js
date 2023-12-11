@@ -11040,6 +11040,7 @@ function getManifestFromRepo(owner, repo, auth, branch = 'master') {
                 core.debug('Invalid json');
             }
         }
+        console.log("=========== in getManifestFromRepo function 3 =============");
         return releases;
     });
 }
