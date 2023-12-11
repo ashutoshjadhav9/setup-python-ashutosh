@@ -11030,6 +11030,7 @@ function getManifestFromRepo(owner, repo, auth, branch = 'master') {
                 break;
             }
         }
+        console.log(" === manifestUrl === " + manifestUrl);
         console.log("=========== in getManifestFromRepo function 5 1 =============");
         headers['accept'] = 'application/vnd.github.VERSION.raw';
         console.log("=========== in getManifestFromRepo function 5 2 =============");
