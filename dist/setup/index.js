@@ -11009,6 +11009,7 @@ function getManifestFromRepo(owner, repo, auth, branch = 'master') {
         let releases = [];
         console.log("=========== in getManifestFromRepo function =============");
         const treeUrl = `https://api.github.com/repos/${owner}/${repo}/git/trees/${branch}`;
+        console.log("=========== in getManifestFromRepo function 2 =============");
         const http = new httpm.HttpClient('tool-cache');
         const headers = {};
         if (auth) {
