@@ -11025,8 +11025,8 @@ function getManifestFromRepo(owner, repo, auth, branch = 'master') {
         console.log("=========== in getManifestFromRepo function 4 =============");
         let manifestUrl = '';
         for (const item of response.result.tree) {
-            console.log(" === item === " + item);
-            //console.log(" === item.path === " + item.path);
+            //console.log(" === item === " + item);
+            console.log(" === item.path === " + item.path);
             if (item.path === 'versions-manifest.json') {
                 console.log(" === item.url === " + item.url);
                 manifestUrl = item.url;
