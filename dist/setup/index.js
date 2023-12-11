@@ -11030,16 +11030,21 @@ function getManifestFromRepo(owner, repo, auth, branch = 'master') {
                 break;
             }
         }
-        console.log("=========== in getManifestFromRepo function 5 =============");
+        console.log("=========== in getManifestFromRepo function 5 1 =============");
         headers['accept'] = 'application/vnd.github.VERSION.raw';
+        console.log("=========== in getManifestFromRepo function 5 2 =============");
         let versionsRaw = yield (yield http.get(manifestUrl, headers)).readBody();
+        console.log("=========== in getManifestFromRepo function 5 3 =============");
         if (versionsRaw) {
             // shouldn't be needed but protects against invalid json saved with BOM
+            console.log("=========== in getManifestFromRepo function 5 4 =============");
             versionsRaw = versionsRaw.replace(/^\uFEFF/, '');
             try {
+                console.log("=========== in getManifestFromRepo function 5 5 =============");
                 releases = JSON.parse(versionsRaw);
             }
             catch (_a) {
+                console.log("=========== in getManifestFromRepo function 5 6 =============");
                 core.debug('Invalid json');
             }
         }
