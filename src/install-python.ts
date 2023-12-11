@@ -71,7 +71,7 @@ async function installPython(workingDirectory: string) {
 export async function installCpythonFromRelease(release: tc.IToolRelease) {
   const downloadUrl = release.files[0].download_url;
 
-  core.info(`Download from "${downloadUrl}"`);
+  core.info(` === in install-python file === Download from "${downloadUrl}"`);
   let pythonPath = '';
   try {
     pythonPath = await tc.downloadTool(downloadUrl, undefined, AUTH);

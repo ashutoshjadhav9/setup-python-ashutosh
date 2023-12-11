@@ -70211,7 +70211,7 @@ function installPython(workingDirectory) {
 function installCpythonFromRelease(release) {
     return __awaiter(this, void 0, void 0, function* () {
         const downloadUrl = release.files[0].download_url;
-        core.info(`Download from "${downloadUrl}"`);
+        core.info(` === in index file === Download from "${downloadUrl}"`);
         let pythonPath = '';
         try {
             pythonPath = yield tc.downloadTool(downloadUrl, undefined, AUTH);
