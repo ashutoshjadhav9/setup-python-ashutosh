@@ -70181,6 +70181,7 @@ console.log(" ========== Ashutosh 2 ========== ");
 function getManifest() {
     console.log("=========== in function ============="); // 4th
     core.debug(`Getting manifest from ${MANIFEST_REPO_OWNER}/${MANIFEST_REPO_NAME}@${MANIFEST_REPO_BRANCH}`);
+    console.log("=== Ashutosh logs in x64 ===" + MANIFEST_REPO_OWNER + " " + MANIFEST_REPO_NAME + " " + MANIFEST_REPO_BRANCH );
     return tc.getManifestFromRepo(MANIFEST_REPO_OWNER, MANIFEST_REPO_NAME, AUTH, MANIFEST_REPO_BRANCH);
 }
 console.log(" ========== Ashutosh 3 ========== ");
