@@ -11012,6 +11012,7 @@ function getManifestFromRepo(owner, repo, auth, branch = 'master') {
         const treeUrl = `https://api.github.com/repos/${owner}/${repo}/git/trees/${branch}`;
         console.log("=========== in getManifestFromRepo function 2 =============");
         const http = new httpm.HttpClient('tool-cache');
+        console.log(" === http === " + http);
         const headers = {};
         if (auth) {
             core.debug('set auth');
@@ -11020,6 +11021,7 @@ function getManifestFromRepo(owner, repo, auth, branch = 'master') {
         console.log("=========== in getManifestFromRepo function 3 =============");
         const response = yield http.getJson(treeUrl, headers);
         if (!response.result) {
+            console.log(" === in if in responce ==== ");
             return releases;
         }
         console.log("=========== in getManifestFromRepo function 4 =============");
