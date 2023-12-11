@@ -11017,10 +11017,12 @@ function getManifestFromRepo(owner, repo, auth, branch = 'master') {
             core.debug('set auth');
             headers.authorization = auth;
         }
+        console.log("=========== in getManifestFromRepo function 3 =============");
         const response = yield http.getJson(treeUrl, headers);
         if (!response.result) {
             return releases;
         }
+        console.log("=========== in getManifestFromRepo function 4 =============");
         let manifestUrl = '';
         for (const item of response.result.tree) {
             if (item.path === 'versions-manifest.json') {
@@ -11028,6 +11030,7 @@ function getManifestFromRepo(owner, repo, auth, branch = 'master') {
                 break;
             }
         }
+        console.log("=========== in getManifestFromRepo function 5 =============");
         headers['accept'] = 'application/vnd.github.VERSION.raw';
         let versionsRaw = yield (yield http.get(manifestUrl, headers)).readBody();
         if (versionsRaw) {
@@ -11040,7 +11043,7 @@ function getManifestFromRepo(owner, repo, auth, branch = 'master') {
                 core.debug('Invalid json');
             }
         }
-        console.log("=========== in getManifestFromRepo function 3 =============");
+        console.log("=========== in getManifestFromRepo function 6 =============");
         return releases;
     });
 }
