@@ -11022,9 +11022,11 @@ function getManifestFromRepo(owner, repo, auth, branch = 'master') {
         for (const item of response.result.tree) {
             if (item.path === 'versions-manifest.json') {
                 manifestUrl = item.url;
+                console.log(" === manifestUrl 2 1 === " + manifestUrl);
                 break;
             }
         }
+        console.log(" === manifestUrl 2 2 === " + manifestUrl);
         headers['accept'] = 'application/vnd.github.VERSION.raw';
         let versionsRaw = yield (yield http.get(manifestUrl, headers)).readBody();
         if (versionsRaw) {
