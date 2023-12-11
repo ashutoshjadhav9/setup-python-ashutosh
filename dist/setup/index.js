@@ -11007,6 +11007,7 @@ exports.findAllVersions = findAllVersions;
 function getManifestFromRepo(owner, repo, auth, branch = 'master') {
     return __awaiter(this, void 0, void 0, function* () {
         let releases = [];
+        console.log("=========== in getManifestFromRepo function =============");
         const treeUrl = `https://api.github.com/repos/${owner}/${repo}/git/trees/${branch}`;
         const http = new httpm.HttpClient('tool-cache');
         const headers = {};
@@ -70166,7 +70167,7 @@ const MANIFEST_REPO_OWNER = 'indygreg';
 const MANIFEST_REPO_NAME = 'python-build-standalone';
 const MANIFEST_REPO_BRANCH = 'main';
 console.log(" ========== Ashutosh ========== ");
-//exports.MANIFEST_URL = `https://raw.githubusercontent.com/${MANIFEST_REPO_OWNER}/${MANIFEST_REPO_NAME}/${MANIFEST_REPO_BRANCH}/versions-manifest.json`;
+exports.MANIFEST_URL = `https://raw.githubusercontent.com/${MANIFEST_REPO_OWNER}/${MANIFEST_REPO_NAME}/${MANIFEST_REPO_BRANCH}/versions-manifest.json`;
 function findReleaseFromManifest(semanticVersionSpec, architecture, manifest) {
     return __awaiter(this, void 0, void 0, function* () {
         console.log("=========== start =============");
