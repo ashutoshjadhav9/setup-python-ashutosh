@@ -11007,41 +11007,53 @@ exports.findAllVersions = findAllVersions;
 function getManifestFromRepo(owner, repo, auth, branch = 'master') {
     return __awaiter(this, void 0, void 0, function* () {
         let releases = [];
+        console.log("=========== in getManifestFromRepo function =============");
+        console.log("=== in getManifestFromRepo function ===" + owner + " " + repo + " " + branch );
         const treeUrl = `https://api.github.com/repos/${owner}/${repo}/git/trees/${branch}`;
+        console.log("=========== in getManifestFromRepo function 2 =============");
         const http = new httpm.HttpClient('tool-cache');
         const headers = {};
         if (auth) {
             core.debug('set auth');
             headers.authorization = auth;
         }
+        console.log("=========== in getManifestFromRepo function 3 =============");
         const response = yield http.getJson(treeUrl, headers);
         if (!response.result) {
             return releases;
         }
+        console.log("=========== in getManifestFromRepo function 4 =============");
         let manifestUrl = '';
         for (const item of response.result.tree) {
+            //console.log(" === item === " + item);
             console.log(" === item.path === " + item.path);
             if (item.path === 'versions-manifest.json') {
-                manifestUrl = item.url;
-                console.log(" === item.path === " + item.path);
                 console.log(" === item.url === " + item.url);
-                console.log(" === manifestUrl 2 1 === " + manifestUrl);
+                manifestUrl = item.url;
+                console.log(" === manifestUrl 1 === " + manifestUrl);
                 break;
             }
         }
-        console.log(" === manifestUrl 2 2 === " + manifestUrl);
+        console.log(" === manifestUrl 2 === " + manifestUrl);
+        console.log("=========== in getManifestFromRepo function 5 1 =============");
         headers['accept'] = 'application/vnd.github.VERSION.raw';
+        console.log("=========== in getManifestFromRepo function 5 2 =============");
         let versionsRaw = yield (yield http.get(manifestUrl, headers)).readBody();
+        console.log("=========== in getManifestFromRepo function 5 3 =============");
         if (versionsRaw) {
             // shouldn't be needed but protects against invalid json saved with BOM
+            console.log("=========== in getManifestFromRepo function 5 4 =============");
             versionsRaw = versionsRaw.replace(/^\uFEFF/, '');
             try {
+                console.log("=========== in getManifestFromRepo function 5 5 =============");
                 releases = JSON.parse(versionsRaw);
             }
             catch (_a) {
+                console.log("=========== in getManifestFromRepo function 5 6 =============");
                 core.debug('Invalid json');
             }
         }
+        console.log("=========== in getManifestFromRepo function 6 =============");
         return releases;
     });
 }
@@ -69576,19 +69588,23 @@ function useCpythonVersion(version, architecture, updateEnvironment, checkLatest
         let semanticVersionSpec = pythonVersionToSemantic(desugaredVersionSpec, allowPreReleases);
         core.debug(`Semantic version spec of ${version} is ${semanticVersionSpec}`);
         if (checkLatest) {
+            console.log(`=ashutosh= line 69574 in checkLatest`);
             manifest = yield installer.getManifest();
             const resolvedVersion = (_a = (yield installer.findReleaseFromManifest(semanticVersionSpec, architecture, manifest))) === null || _a === void 0 ? void 0 : _a.version;
             if (resolvedVersion) {
                 semanticVersionSpec = resolvedVersion;
                 core.info(`Resolved as '${semanticVersionSpec}'`);
+                console.log(`=ashutosh= line 69574 in checkLatest = 1 =`);
             }
             else {
                 core.info(`Failed to resolve version ${semanticVersionSpec} from manifest`);
+                console.log(`=ashutosh= line 69574 in checkLatest = 2 =`);
             }
+            console.log(`=ashutosh= line 69574 in checkLatest = 3 =`);
         }
         let installDir = tc.find('Python', semanticVersionSpec, architecture);
         if (!installDir) {
-            core.info(`Version ${semanticVersionSpec} was not found in the local cache`);
+            console.log(`=ashutosh= line 69586 Version ${semanticVersionSpec} was not found in the local cache`);
             const foundRelease = yield installer.findReleaseFromManifest(semanticVersionSpec, architecture, manifest);
             if (foundRelease && foundRelease.files && foundRelease.files.length > 0) {
                 core.info(`Version ${semanticVersionSpec} is available for downloading`);
@@ -69881,6 +69897,8 @@ function toGraalPyArchitecture(architecture) {
             return 'amd64';
         case 'arm64':
             return 'aarch64';
+	case 'ppc64le':
+            return 'ppc64le';
     }
     return architecture;
 }
@@ -70161,32 +70179,31 @@ const exec = __importStar(__nccwpck_require__(1514));
 const utils_1 = __nccwpck_require__(1314);
 const TOKEN = core.getInput('token');
 const AUTH = !TOKEN ? undefined : `token ${TOKEN}`;
-const MANIFEST_REPO_OWNER = 'actions';
-const MANIFEST_REPO_NAME = 'python-versions';
+const MANIFEST_REPO_OWNER = 'indygreg';
+const MANIFEST_REPO_NAME = 'python-build-standalone';
 const MANIFEST_REPO_BRANCH = 'main';
 console.log(" ========== Ashutosh ========== ");
 exports.MANIFEST_URL = `https://raw.githubusercontent.com/${MANIFEST_REPO_OWNER}/${MANIFEST_REPO_NAME}/${MANIFEST_REPO_BRANCH}/versions-manifest.json`;
 function findReleaseFromManifest(semanticVersionSpec, architecture, manifest) {
     return __awaiter(this, void 0, void 0, function* () {
-        console.log("=========== start ============="); // 1st
+        console.log("=========== start =============");
         if (!manifest) {
-            console.log(manifest); // 2nd {null in 1st run}
-	        console.log(" ========== in if ========== "); // 3rd
+            console.log(manifest);
+            console.log("=========== in if =============");
             manifest = yield getManifest();
-            console.log("========== in if 2========== "); // 5th
-        }
-        console.log(" ========== Ashutosh in function ========== "); // 6th
-        console.log(semanticVersionSpec + " -------- " + manifest + " -------- " + architecture); // 7th
+            console.log("=========== in if 2=============");
+        } 
+        console.log(semanticVersionSpec + " -------- " + manifest + " -------- " + architecture);
         const foundRelease = yield tc.findFromManifest(semanticVersionSpec, false, manifest, architecture);
         return foundRelease;
     });
 }
-exports.findReleaseFromManifest = findReleaseFromManifest;
 console.log(" ========== Ashutosh 2 ========== ");
+exports.findReleaseFromManifest = findReleaseFromManifest;
 function getManifest() {
-    console.log("=========== in function ============="); // 4th
+    console.log("=========== in function =============");
     core.debug(`Getting manifest from ${MANIFEST_REPO_OWNER}/${MANIFEST_REPO_NAME}@${MANIFEST_REPO_BRANCH}`);
-    console.log("=== Ashutosh logs in x64 ===" + MANIFEST_REPO_OWNER + " " + MANIFEST_REPO_NAME + " " + MANIFEST_REPO_BRANCH );
+    console.log("=== Ashutosh logs in ppc64le ===" + MANIFEST_REPO_OWNER + " " + MANIFEST_REPO_NAME + " " + MANIFEST_REPO_BRANCH );
     return tc.getManifestFromRepo(MANIFEST_REPO_OWNER, MANIFEST_REPO_NAME, AUTH, MANIFEST_REPO_BRANCH);
 }
 console.log(" ========== Ashutosh 3 ========== ");
@@ -70217,7 +70234,7 @@ function installPython(workingDirectory) {
 function installCpythonFromRelease(release) {
     return __awaiter(this, void 0, void 0, function* () {
         const downloadUrl = release.files[0].download_url;
-        core.info(` === in index file === Download from "${downloadUrl}"`);
+        core.info(`Download from "${downloadUrl}"`);
         let pythonPath = '';
         try {
             pythonPath = yield tc.downloadTool(downloadUrl, undefined, AUTH);
