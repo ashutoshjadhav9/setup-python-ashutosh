@@ -11022,6 +11022,7 @@ function getManifestFromRepo(owner, repo, auth, branch = 'master') {
         for (const item of response.result.tree) {
             if (item.path === 'versions-manifest.json') {
                 manifestUrl = item.url;
+                console.log(" === item.url === " + item.url);
                 console.log(" === manifestUrl 2 1 === " + manifestUrl);
                 break;
             }
