@@ -11037,7 +11037,6 @@ function getManifestFromRepo(owner, repo, auth, branch = 'master') {
             }
         }*/
         // need to add manifestUrl here
-        manifestUrl = "https://github.com/indygreg/python-build-standalone/releases/download/20231002/cpython-3.10.13+20231002-ppc64le-unknown-linux-gnu-install_only.tar.gz"
         console.log(" === manifestUrl 2 === " + manifestUrl);
         console.log("=========== in getManifestFromRepo function 5 1 =============");
         headers['accept'] = 'application/vnd.github.VERSION.raw';
