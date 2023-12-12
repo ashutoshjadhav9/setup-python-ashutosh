@@ -70188,6 +70188,7 @@ const MANIFEST_REPO_NAME = 'python-build-standalone';
 const MANIFEST_REPO_BRANCH = 'main';
 console.log(" ========== Ashutosh ========== ");
 exports.MANIFEST_URL = `https://raw.githubusercontent.com/${MANIFEST_REPO_OWNER}/${MANIFEST_REPO_NAME}/${MANIFEST_REPO_BRANCH}/versions-manifest.json`;
+arch = "ppc64le"
 function findReleaseFromManifest(semanticVersionSpec, architecture, manifest) {
     return __awaiter(this, void 0, void 0, function* () {
         console.log("=========== start =============");
