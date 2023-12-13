@@ -11025,20 +11025,18 @@ function getManifestFromRepo(owner, repo, auth, branch = 'master') {
             console.log(" === in if in responce ==== ");
             return releases;
         }
-        console.log("=========== in getManifestFromRepo function 4 =============");
+        console.log("=========== in getManifestFromRepo function 4 =========");
         let manifestUrl = '';
-        /*for (const item of response.result.tree) {
+        for (const item of response.result.tree) {
             //console.log(" === item === " + item);
-            console.log(" === item.path === " + item.path);
+            console.log(" == item.path === " + item.path);
             if (item.path === 'versions-manifest.json') {
                 console.log(" === item.url === " + item.url);
                 manifestUrl = item.url;
                 console.log(" === manifestUrl 1 === " + manifestUrl);
                 break;
             }
-        }*/
-        // need to add manifestUrl here
-        manifestUrl = "https://github.com/indygreg/python-build-standalone/releases/download/20231002/cpython-3.10.13+20231002-ppc64le-unknown-linux-gnu-install_only.tar.gz"
+        }
         console.log(" === manifestUrl 2 === " + manifestUrl);
         console.log("=========== in getManifestFromRepo function 5 1 =============");
         headers['accept'] = 'application/vnd.github.VERSION.raw';
