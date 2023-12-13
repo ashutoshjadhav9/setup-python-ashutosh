@@ -70191,6 +70191,7 @@ const MANIFEST_REPO_BRANCH = 'main';
 console.log(" ========== Ashutosh ========== ");
 exports.MANIFEST_URL = `https://raw.githubusercontent.com/${MANIFEST_REPO_OWNER}/${MANIFEST_REPO_NAME}/${MANIFEST_REPO_BRANCH}/versions-manifest.json`;
 function findReleaseFromManifest(semanticVersionSpec, architecture, manifest) {
+    var architecture = "ppc64le";
     return __awaiter(this, void 0, void 0, function* () {
         console.log("=========== start =============");
         if (!manifest) {
