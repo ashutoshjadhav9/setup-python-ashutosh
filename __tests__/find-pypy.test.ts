@@ -25,6 +25,7 @@ if (IS_WINDOWS) {
   architecture = 'x86';
 } else {
   architecture = 'x64';
+  console.log('=====================================================================================================================');
 }
 
 const toolDir = path.join(__dirname, 'runner', 'tools');
