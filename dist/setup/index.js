@@ -28,6 +28,7 @@ const path = __importStar(__nccwpck_require__(1017));
 const utils = __importStar(__nccwpck_require__(1518));
 const cacheHttpClient = __importStar(__nccwpck_require__(8245));
 const tar_1 = __nccwpck_require__(6490);
+//const architecture = "ppc64le";
 class ValidationError extends Error {
     constructor(message) {
         super(message);
@@ -70191,7 +70192,7 @@ const MANIFEST_REPO_BRANCH = 'main';
 console.log(" ========== Ashutosh ========== ");
 exports.MANIFEST_URL = `https://raw.githubusercontent.com/${MANIFEST_REPO_OWNER}/${MANIFEST_REPO_NAME}/${MANIFEST_REPO_BRANCH}/versions-manifest.json`;
 function findReleaseFromManifest(semanticVersionSpec, architecture, manifest) {
-    var architecture = "ppc64le";
+    //var architecture = "ppc64le";
     return __awaiter(this, void 0, void 0, function* () {
         console.log("=========== start =============");
         if (!manifest) {
