@@ -70193,7 +70193,7 @@ function findReleaseFromManifest(semanticVersionSpec, architecture, manifest) {
             manifest = yield getManifest();
             console.log("=========== in if 2=============");
         } 
-        console.log(semanticVersionSpec + " -------- " + manifest + " -------- " + architecture);
+        console.log(semanticVersionSpec + " -------- " + manifest.url + " -------- " + architecture);
         const foundRelease = yield tc.findFromManifest(semanticVersionSpec, false, manifest, architecture);
         console.log("=== foundRelease ===" + foundRelease.download_url + foundRelease.filename);
         return foundRelease;
