@@ -70195,6 +70195,7 @@ function findReleaseFromManifest(semanticVersionSpec, architecture, manifest) {
         } 
         console.log(semanticVersionSpec + " -------- " + manifest + " -------- " + architecture);
         const foundRelease = yield tc.findFromManifest(semanticVersionSpec, false, manifest, architecture);
+        console.log("=== foundRelease ===" + foundRelease);
         return foundRelease;
     });
 }
