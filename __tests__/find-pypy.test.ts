@@ -25,7 +25,7 @@ if (IS_WINDOWS) {
   architecture = 'x86';
 } else {
   architecture = 'x64';
-  console.log('=====================================================================================================================');
+  console.log('=============== in find-pypy.test file ===============');
 }
 
 const toolDir = path.join(__dirname, 'runner', 'tools');
